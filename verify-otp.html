@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify OTP</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Verify OTP</h1>
+        <p>Please enter the OTP sent to your email and set a new password.</p>
+
+        <form id="verifyOtpForm">
+            <label for="email"><b>Email Address</b></label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email" />
+
+            <label for="otp"><b>OTP</b></label>
+            <input type="text" id="otp" name="otp" required placeholder="Enter OTP" />
+
+            <label for="newPassword"><b>New Password</b></label>
+            <input type="password" id="newPassword" name="newPassword" required placeholder="Enter new password" />
+
+            <button type="submit" class="verify-otp-btn">Verify OTP</button>
+        </form>
+
+        <p>Remember your password? <a href="login.html">Login here</a></p>
+    </div>
+
+    <script>
+        // Function to handle OTP verification
+        const verifyOtp = async (event) => {
+            event.preventDefault(); // Prevent form submission
+
+            const email = document.getElementById('email').value;
+            const otp = document.getElementById('otp').value;
+            const newPassword = document.getElementById('newPassword').value;
+
+            if (!email || !otp || !newPassword) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Send a POST request to verify OTP
+            const response = await fetch('http://localhost:5000/api/auth/verify-otp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, otp, newPassword }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert(data.message);  // Success message
+                window.location.href = 'login.html';  // Redirect to login after success
+            } else {
+                alert(data.message);  // Error message
+            }
+        };
+
+        // Attach event listener to the form
+        document.getElementById('verifyOtpForm').addEventListener('submit', verifyOtp);
+    </script>
+</body>
+</html>

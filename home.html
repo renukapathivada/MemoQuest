@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <style>
+        /* Home page styles inside this tag */
+        #top {
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            background-color: #336c92;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #top img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        #top h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        button {
+            background-color: #ff4500;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #ff6347;
+        }
+
+        .intro-text {
+            font-size: 2rem; /* Larger text size */
+            margin: 20px 0;
+            color: #222; /* Darker text color */
+            text-align: center; /* Center the text for a better layout */
+            font-weight: bold; /* Make the text bold for emphasis */
+        }
+        
+        /* Game Instructions Section */
+        .game-instructions {
+            width: 60%;
+            height: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #34495e; /* Darker color inside */
+            color: white;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            animation: borderColorChange 5s infinite alternate;
+            border: 5px solid transparent;
+            background-clip: padding-box; /* Prevents the background from covering the border */
+        }
+
+        /* Vibrant border animation */
+        @keyframes borderColorChange {
+            0% {
+                border-color: #a2d5f2; /* Soft Blue */
+            }
+            25% {
+                border-color: #f2b5d4; /* Soft Pink */
+            }
+            50% {
+                border-color: #f3e5ab; /* Pale Yellow */
+            }
+            75% {
+                border-color: #b2e7d6; /* Soft Green */
+            }
+            100% {
+                border-color: #e0aaff; /* Light Purple */
+            }
+        }
+
+        .game-instructions h3 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .game-instructions ul {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .game-instructions ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Soft Dynamic Background Animation (Pleasant pastel colors) */
+        body {
+            background: linear-gradient(45deg, #a2d5f2, #f2b5d4, #f3e5ab, #b2e7d6, #e0aaff);
+            background-size: 400% 400%;
+            animation: backgroundAnimation 10s ease infinite;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Keyframes for changing background */
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="top">
+        <img src="game/logo.png" alt="Logo">
+        <h1>Memory Game</h1>
+    </div>
+    <div id="container">
+        <p class="intro-text">
+            Welcome to Memory Game! Choose a grid, memorize the pictures inside, and match them with the same picture in other grids. Ready to test your memory?
+        </p>
+        
+        <!-- Updated section with Game Instructions -->
+        <div class="game-instructions">
+            <h3>How to Play</h3>
+            <ul>
+                <li>1. Choose a grid size for your game.</li>
+                <li>2. Memorize the pictures inside the grid for a few seconds.</li>
+                <li>3. After the timer runs out, try to match the pictures from memory.</li>
+                <li>4. Continue until all pairs are matched.</li>
+                <li>5. Try to complete the game in the shortest time possible!</li>
+            </ul>
+        </div>
+
+        <div class="buttons">
+            <button onclick="window.location.href='login.html'">Login</button>
+            <button onclick="window.location.href='signup.html'">Signup</button>
+        </div>
+    </div>
+
+    
+</body>
+</html>

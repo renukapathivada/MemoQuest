@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game Signup</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Game</h1> 
+        <h2>Signup</h2>
+        <form id="signupForm" action="javascript:void(0);">
+            <label><b>Name</b></label>
+            <input type="text" name="Name" id="name" required><br>
+            <label><b>Email</b></label>
+            <input type="email" name="email" id="email" required><br>
+            <label><b>Password</b></label>
+            <input type="password" name="password" id="password" required><br>
+            <label><b>Phone</b></label>
+            <input type="text" name="Phone" id="phone" required><br>
+            <label><b>Date of Birth</b></label>
+            <input type="date" name="dob" id="dob" required><br>
+            <label><b>Gender</b></label>
+            <select name="gender" id="gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select><br>
+            <button type="submit">Signup</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+    <script>
+       // Frontend JS
+       document.getElementById("signupForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const phone = document.getElementById("phone").value;
+        const dob = document.getElementById("dob").value;
+        const gender = document.getElementById("gender").value;
+    
+        // Validate the input
+        const emailRegex = /^[\w-\.]+@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+        if (!emailRegex.test(email)) {
+            alert("Please enter a valid email address (e.g., user@example.com).");
+            return;
+        }
+        if (password.length < 6) {
+            alert("Password must be at least 6 characters long.");
+            return;
+        }
+    
+        // Send POST request to backend for user registration
+        fetch('http://localhost:5000/api/auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password,
+                phone: phone,
+                dob: dob,
+                gender: gender
+            })
+        })
+        
+        .then(response => {
+            if (!response.ok) { // Check if the response is not OK
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                alert("Signup successful!");
+                window.location.href = "login.html"; // redirect to login page
+            } else {
+                alert(data.message); // show error message from backend
+            }
+        })
+        .catch(error => {
+            console.error('Error during signup:', error); // log full error details
+            alert('An error occurred during signup.');
+        });
+    });
+
+    </script>
+</body>
+</html>

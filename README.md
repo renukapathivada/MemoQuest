@@ -1,6 +1,6 @@
 # 🧠 Memo Quest – A Memory Game
 
-Memo Quest is a browser-based memory game where players flip cards to find matching pairs. The game is built using HTML, CSS, and vanilla JavaScript for the frontend, and Node.js with MongoDB for the backend to store player scores and stats.
+Memo Quest is a browser-based memory game where players flip cards to find matching pairs. The game is built using HTML, CSS, and JavaScript for the frontend, and Node.js with MongoDB for the backend to store player scores and stats.
 
 ---
 
@@ -10,7 +10,6 @@ Memo Quest is a browser-based memory game where players flip cards to find match
 - **Responsive Design**: Works on both desktop and mobile devices.
 - **Leaderboard**: Scores are stored and can be retrieved from the backend (MongoDB).
 - **Backend**: Built with Node.js and MongoDB for storing user statistics and scores.
-- **Interactive UI**: The game board updates dynamically based on player actions.
 
 ---
 
